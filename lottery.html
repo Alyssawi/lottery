@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alyssa's Epic Gamer Lottery</title>
+</head>
+<body>
+    <h1>Alyssa's Epic Gamer Lottery</h1>
+    <script language="javascript">
+        const pick = new Array();
+        for (let i = 0; i < 5; i++) {
+            var num = Math.round((Math.random()*47+1));
+            pick.push(num);
+        }
+        document.write("Your pick before sorting: ")
+        for (let i = 0; i < 5; i++) {
+            document.write(pick[i] + " "); 
+        }
+
+        pick.sort(function(a, b) {return a - b});
+
+        document.write("<br>Your pick after sorting: ");
+        for (let i = 0; i < 5; i++) {
+            document.write(pick[i] + " "); 
+        }
+        var luckyBall = Math.round(Math.random()*17+1);
+        document.write("<br> Your lucky ball: " + luckyBall);
+
+        document.write("<br>Winning combo: 12 15 24 35 48<br>Winning lucky ball: 3");
+
+        var matches = 0;
+        const winCombo = new Array("12", "15", "24", "35", "48");
+        for (let i = 0; i < 5; i++) {
+            if (pick[i] == winCombo[i]) {
+                matches += 1;
+            }
+        }
+        
+        document.write("<br>Number of matches in your pick to the winning combo: " + matches);
+        var ballMatch = (luckyBall == 3);
+        if (ballMatch) {
+            document.write("<br>Lucky ball matches!");
+        } else {
+            document.write("<br>Lucky ball does not match");
+        }
+
+        var payout;
+        if (matches == 5) {
+            if (ballMatch) {
+                payout = "$7,000 a WEEK for LIFE";
+            } else {
+                payout = "$25,000 a YEAR for LIFE";
+            }
+        } else if (matches == 4) {
+            if (ballMatch) {
+                payout = "$5,000";
+            } else {
+                payout = "$200";
+            }
+        } else if (matches == 3) {
+            if (ballMatch) {
+                payout = "$150";
+            } else {
+                payout = "$20";
+            }
+        } else if (matches == 2) {
+            if (ballMatch) {
+                payout = "$25";
+            } else {
+                payout = "$3";
+            }
+        } else if (matches == 1) {
+            if (ballMatch) {
+                payout = "$6";
+            } else {
+                payout = "$0";
+            }
+        } else if (matches == 0) {
+            if (ballMatch) {
+                payout = "$4";
+            } else {
+                payout = "$0";
+            }
+        }
+        document.write("<br>Payout: " + payout);
+    </script>
+</body>
+</html>
